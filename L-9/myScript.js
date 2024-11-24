@@ -1,3 +1,5 @@
+// https://github.com/A-l-E-v/JS_Synergy/blob/main/L-9/myScript.js
+
 // 3. Создайте скрипт, который в html-документе создает следующую структуру:
 // <div class="post-wrap">
 // <div class="post-item">
