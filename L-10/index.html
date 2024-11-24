@@ -1,0 +1,83 @@
+<!-- 2. Создайте скрипт, который содержит всего одну функцию. Она должна
+выводить в консоль сообщение “It is a very short function 1.”
+3. Создайте еще один скрипт, который также содержит одну функцию.
+Она должна выводить в консоль сообщение “It is a very short function 2.”
+4. Создайте html-документ. В него по очереди подключите скрипт из
+прошлого домашнего задания, а также 2 новых с помощью promise.
+В случае ошибки скрипт должен сообщать о ней. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" href="favicon.ico" />
+    <link href="myHomeWorkCSS.css" rel="stylesheet">
+
+
+</head>
+
+<body id="main">
+
+</body>
+<script>
+
+    // функция загрузки скрипта для создания div-ов
+    function loadNewScript(src, callback) {
+        let script = document.createElement('script')
+        script.src = src
+
+        script.onload = () => callback(null, script)
+        script.onerror = () => callback(new Error(`Script download error! ${src}`))
+
+        document.head.append(script)
+    }
+
+    // функция загрузки коротких скриптов
+
+    function loadShortScript(src) {
+        return new Promise(function (resolve, reject) {
+            let script = document.createElement('script');
+            script.src = src
+
+            script.onload = () => resolve(null, script)
+            script.onerror = () => reject(new Error(`Script download error! ${src}`))
+
+            document.head.append(script)
+        }
+        )
+    }
+
+
+    // загружаем скрипт для создания div-ов
+    loadNewScript('myScript.js', function (error, script) {
+        if (error) {
+            alert(error)
+        } else {
+            createDiv()
+        }
+
+    });
+    // загружаем скрипты коротких функций
+
+    let promise = loadShortScript('script1.js')
+    promise.then(
+        function (result) {
+            shortFunction1()
+        }
+    )
+    promise.catch(alert)
+
+    promise = loadShortScript('script2.js')
+    promise.then(
+        function (result) {
+            shortFunction2()
+        }
+    )
+    promise.catch(alert)
+</script>
+
+
+</html>
