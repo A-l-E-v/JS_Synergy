@@ -1,0 +1,57 @@
+<!-- 3. Создайте скрипт, который в html-документе создает следующую структуру:
+<div class="post-wrap">
+<div class="post-item">
+<div class="post-item-wrap">
+<a class="post-link">
+<h3 class="post-title">My new div
+<p class="post-content">Some long text</p>
+</h3>
+</a>
+</div>
+</div>
+</div>  -->
+
+<!-- Создайте html-документ. В него подключите css-файл, приложенный к домашнему задания.
+Опишите в нем скрипт, который подгружает написанный ранее внешний файл с помощью callback. 
+В случае ошибки скрипт должен сообщать о ней. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" href="favicon.ico" />
+    <link href="myHomeWorkCSS.css" rel="stylesheet">
+
+
+</head>
+
+<body id="main">
+
+</body>
+<script>
+
+    function loadNewScript(src, callback) {
+        let script = document.createElement('script')
+        script.src = src
+
+        script.onload = () => callback(null, script)
+        script.onerror = () => callback(new Error(`Script download error! ${src}`))
+
+        document.head.append(script)
+    }
+
+    loadNewScript('myScript.js', function(error, script){
+        if (error) {
+            alert(error)
+        } else {
+            createDiv()
+        }
+
+    });
+</script>
+
+
+</html>
