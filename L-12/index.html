@@ -1,0 +1,29 @@
+<!-- https://github.com/A-l-E-v/JS_Synergy/tree/main/L-12 -->
+
+<!-- 4. Создайте html-документ, в котором создает cookies со сроком жизни 1
+год. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie</title>
+
+
+
+</head>
+
+<body>
+    <script>
+        let cookie_date = new Date()
+        cookie_date.setFullYear(cookie_date.getFullYear() + 1)
+        document.cookie = `just a cookie for 1 year; samesite=strict; expires=` + cookie_date.toUTCString()
+    </script>
+</body>
+
+
+
+</html>
