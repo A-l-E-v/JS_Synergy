@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // https://github.com/A-l-E-v/JS_Synergy/blob/main/L-15/L-15.js
+
+        // Создайте html-документ. В нем опишите скрипт, создающий 2 класса
+        // Employee и Employee1.
+        // Первый класс описывает объект с 4 свойствами - имя, фамилия, ставка
+        // и количество дней работы.
+        // Среди методов первого класса опишите только вычисление зарплаты:
+        // количество дней, умноженное на ставку.
+        // Выведите в консоль все свойства объекта, а также его заработную
+        // плату.
+        // Второй класс должен описывать такой же объект.
+        // Опишите методы получения и изменения каждого свойства объекта.
+        // Также опишите метод вычисления заработной платы. В случае, если данных
+        // для такого расчета будет не достаточно, скрипт должен выводить ошибку в
+        // консоль.
+
+        class Employee {
+            constructor(name, surname, rate, days) {
+                this.name = name;
+                this.surname = surname;
+                this.rate = rate;
+                this.days = days
+            }
+            salary() {
+                return this.rate * this.days
+            }
+        }
+
+        let emp1 = new Employee('Вася', 'Петров', 1200, 20)
+        console.log(emp1.name + ' ' + emp1.surname + ' ' + emp1.rate + ' ' + emp1.days)
+        console.log(emp1.salary())
+
+
+        class Employee1 {
+            constructor(name, surname, rate, days) {
+                this._name = name;
+                this._surname = surname;
+                this._rate = rate;
+                this._days = days;
+            }
+
+            salary() {
+                if (this._rate && this._days) return this._rate * this._days
+                console.log('Не достаточно информации по дням работы или по ставке.')
+            }
+
+            get name() {
+                return this._name;
+            }
+
+            set name(name) {
+                this._name = name;
+            }
+
+            get surname() {
+                return this._surname;
+            }
+
+            set surname(surname) {
+                this._surname = surname;
+            }
+
+            get rate() {
+                return this._rate;
+            }
+
+            set rate(rate) {
+                this._rate = rate;
+            }
+
+            get days() {
+                return this._days;
+            }
+
+            set days(days) {
+                this._days = days;
+            }
+
+        }
+
+        let emp2 = new Employee1('Пётр', 'Васин', 2000, 10)
+        console.log(emp2.name + ' ' + emp2.surname + ' ' + emp2.rate + ' ' + emp2.days)
+        console.log(emp2.salary())
+
+    </script>
+</body>
+
+</html>
